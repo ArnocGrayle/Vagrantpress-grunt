@@ -2,3 +2,5 @@
 .ey_local_data
 latest.tar.gz
 wordpress/
+node_modules
+npm-debug.log

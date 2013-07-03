@@ -1,31 +1,38 @@
-# VagrantPress
+# Cohaesus VagrantPress
+Forked from VagrantPress (http://vagrantpress.org/) this project is a packaged development environment for Wordpress. 
 
-*VagrantPress* is a packaged development environment for developing WordPress themes and modules.  I initially created this project to aid in developing child modules for a WordPress blog.
+## Requirements
+* [Vagrant](http://www.vagrantup.com/)
+* [VirtualBox](https://www.virtualbox.org/) or [VMWare Fusion 5](http://www.vmware.com/products/fusion/overview.html)
 
-## Getting Started
+## What's inside?
+* Latest version of Wordpress
+* [Grunt.js / Bower](http://gruntjs.com/)
+* [Bones - Wordpress theme boilerplate](http://themble.com/bones/)
+* PHP5
+* Mysql 
 
-This is a fairly simple project to get up and running.  The procedure for starting up a working WordPress is as follows:
+## Get Started
+Clone this project, and from the root of this project start the vm with the following command
+	
+	vagrant up
 
-1. Clone the project.  (There’s only master branch.)
-2. Run the command `vagrant up`
-3. Open your browser to http://localhost:8080
+This creates the VM with the default virtualbox provider, you can specify the provider (such as VMWare Fusion 5) with the following
+	
+	vagrant up --provider vmware_fusion
 
-You’ll note that a copy of WordPress v. 3.5 has also been copied to the directory where you ran the `vagrant up` command - this is what is being served from the virtual environment.
+The VM will start up and in the process will pull and install the latest version of Wordpress, 
+and create the symlinks nessecary to run the project. Once complete you can view the 
+project on 
 
-To log in to the local Wordpress installation at http://localhost:8080/wordpress/wp-admin/ the username is `admin`, the password is `vagrant`.
+	http://localhost:8080
 
-## A Few Details
+## Start developing
 
-* I’m running this on a local ‘box’ (working on importing this one to S3) of Ubuntu 12.04LTS 64-bit.  This might be a bit full blown for a development environment - feel free to edit the Vagrantfile to include any other box you may have.  (My goal is to get a ‘real’ box loaded to S3 so the install/run is seamless.)
+You can ignore the */wordpress* directory as nothing in here should be edited. All
+development files are contained in */source* where you will find plugins, themes and wp-config.
+The contents of */source* are symlinked to the */wordpress* directory.
 
-* If you're needing a password (for anything - including mysql, it should be `vagrant`)
-
-## UPDATES (June 2013)
-
-* Thanks to some really great help, vagrantpress runs much faster.  We're using the release version of WordPress (instead of cloning the GitHub repository) and there are some sensible defaults added to the puppet scripts.
-
-## Getting Help
-
-Feel free to file an issue, create a pull request, or contact me at [my website][chadthompson].
-
-[chadthompson]: http://chadthompson.me
+## Defaults
+* Default Wordpress login is username: 'admin' and password: 'vagrant'
+* To login to anything in the VM the password should be 'vagrant' (MySQL for example)

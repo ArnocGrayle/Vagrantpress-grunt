@@ -15,9 +15,6 @@ class wordpress::install{
   # Get a new copy of the latest wordpress release
 
 	# FILE TO DOWNLOAD: http://wordpress.org/latest.tar.gz
-
-
-  
   exec{"git-wordpress": #tee hee
     command=>"/usr/bin/wget http://wordpress.org/latest.tar.gz",
     cwd=>"/vagrant/",
@@ -40,11 +37,15 @@ class wordpress::install{
   exec{"load-db":
     command=>"/usr/bin/mysql -u wordpress -pwordpress wordpress < /tmp/wordpress-db.sql"
   }
-  
-  # Copy a working wp-config.php file for the vagrant setup.
-  file{
-    "/vagrant/wordpress/wp-config.php":
-    source=>"puppet:///modules/wordpress/wp-config.php"
+
+  # create symlink to use wp-config.php and /wp-content from source
+  exec { 'wordpress-symlinks': 
+    command => '/bin/rm -rfv /vagrant/wordpress/wp-content && 
+                /bin/rm -rfv /vagrant/wordpress/wp-config-sample.php && 
+                /bin/ln -s /vagrant/source/wp-content /vagrant/wordpress/wp-content &&
+                /bin/ln -s /vagrant/source/wp-config.php /vagrant/wordpress/wp-config.php ',
   }
+
+
   
 }

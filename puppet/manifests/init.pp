@@ -7,4 +7,5 @@ exec { "apt_update":
   class{'apache2::install':}
   class{'php5::install':}  
   class{'mysql::install':}
+  class{'grunt::install':}
   class{'wordpress::install':}
