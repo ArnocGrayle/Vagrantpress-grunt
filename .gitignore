@@ -4,3 +4,4 @@ latest.tar.gz
 wordpress/
 node_modules
 npm-debug.log
+.sass-cache/
