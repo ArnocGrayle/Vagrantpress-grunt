@@ -52,7 +52,7 @@ This task will copy the whole source into the /build folder, combining the wordp
  (themes, plugins, config). This will also dump the current database into */build/database/latest.sql*
 
 ### Import database
-	grunt build
+	grunt import
 This task will import the contents of */build/database/latest.sql* into the database. You can run this when there is a new
 version of the database in the repository
 
