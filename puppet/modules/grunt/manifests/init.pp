@@ -47,7 +47,7 @@ class grunt::install{
 
   # create symlink to stop node-modules foler breaking
   exec { 'node-modules symlink': 
-    command => '/bin/rm -rfv /usr/local/node_modules && /bin/rm -rfv /vagrant/node_modules && /bin/mkdir /usr/local/node_modules && /bin/ln -s /usr/local/node_modules /vagrant/node_modules ',
+    command => '/bin/rm -rfv /usr/local/node_modules && /bin/rm -rfv /vagrant/node_modules && /bin/mkdir /usr/local/node_modules && /bin/ln -sf /usr/local/node_modules /vagrant/node_modules ',
   }
 
   # finally install grunt

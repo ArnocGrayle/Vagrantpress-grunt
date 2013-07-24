@@ -14,7 +14,7 @@ class wordpress::install{
   
   # Get a new copy of the latest wordpress release
 
-	# FILE TO DOWNLOAD: http://wordpress.org/latest.tar.gz
+  # FILE TO DOWNLOAD: http://wordpress.org/latest.tar.gz
   exec{"git-wordpress": #tee hee
     command=>"/usr/bin/wget http://wordpress.org/latest.tar.gz",
     cwd=>"/vagrant/",
@@ -42,8 +42,8 @@ class wordpress::install{
   exec { 'wordpress-symlinks': 
     command => '/bin/rm -rfv /vagrant/wordpress/wp-content && 
                 /bin/rm -rfv /vagrant/wordpress/wp-config-sample.php && 
-                /bin/ln -s /vagrant/source/wp-content /vagrant/wordpress/wp-content &&
-                /bin/ln -s /vagrant/source/wp-config.php /vagrant/wordpress/wp-config.php ',
+                /bin/ln -sf /vagrant/source/wp-content /vagrant/wordpress/wp-content &&
+                /bin/ln -sf /vagrant/source/wp-config.php /vagrant/wordpress/wp-config.php ',
   }
 
 
